@@ -1,0 +1,12 @@
+ip addr replace 172.16.1.254/24 dev eth1
+ip addr add 172.16.254.1/24 dev eth0
+
+dpkg -i /var/cache/apt/archives/*.deb
+apt install -f udhcpd
+
+
+ip route add default via 172.16.254.254
+
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+udhcpd
